@@ -1,8 +1,9 @@
 import sys
+
 sys.path.append('C:/Users/New_Alexs/PycharmProjects/PythonProject1')
 
-from src.masks import (get_mask_card_number, get_mask_account)
-
+from src.masks import get_mask_account
+from src.masks import get_mask_card_number
 
 """
 Написать функцию, которая, обрабатывает информацию о карте и о счете
