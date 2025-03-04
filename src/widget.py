@@ -30,3 +30,6 @@ def get_new_data(old_data: str) -> str:
     """Функция принимает строку и выводит дату в формате dd.mm.yyyy"""
     data_slize = old_data[0:10].split("-")
     return ".".join(data_slize[::-1])
+
+print(mask_account_card('Счет 45457000792289606361'))
+print(get_new_data("2024-03-11T02:26:18.671407"))

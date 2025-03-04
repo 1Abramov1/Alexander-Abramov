@@ -55,3 +55,4 @@ for card_number in card_number_generator(1, 3):
 - 'generators': функции   'card_number_generator'
 
 - Покрытие тестами составляет 90% кода проекта.
+
