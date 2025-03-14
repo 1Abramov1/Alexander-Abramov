@@ -1,20 +1,18 @@
+from functools import wraps
 from typing import Any
 from typing import Callable
-from functools import wraps
+from typing import Union
 
 
-def log(filename: Any) -> Callable:
-    """Декоратор, который логирует результаты работу функции в файл или консоль"""
-
+def log(filename: Any = None) -> Callable:
     def decorator(func: Callable) -> Callable:
-
         @wraps(func)
-        def wrapper(*args:Any, **kwargs: Any) -> Any:
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
                 result = func(*args, **kwargs)
                 log_message = f"{func.__name__} ok: {result}"
                 if filename:
-                    with open(filename, 'a') as log_file:
+                    with open(filename, "a") as log_file:
                         log_file.write(log_message + "\n")
                 else:
                     print(log_message)
@@ -22,17 +20,20 @@ def log(filename: Any) -> Callable:
             except Exception as e:
                 error_message = f"{func.__name__} error: {type(e).__name__}. Inputs: {args}, {kwargs}"
                 if filename:
-                    with open(filename, 'a') as log_file:
+                    with open(filename, "a") as log_file:
                         log_file.write(error_message + "\n")
                 else:
                     print(error_message)
                 raise
+
         return wrapper
+
     return decorator
 
 
-# #@log("mylog.txt")
-# def my_decorator(x, y):
-#     return x * y
-#
-# print(my_decorator(3, 4))
+@log("../src/mylog.txt")
+def my_decorator(a: Union[int, float], b: Union[int, float]) -> Union[int, float]:
+    return a * b
+
+
+print(my_decorator(3, 5))
