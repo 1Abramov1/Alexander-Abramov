@@ -31,7 +31,7 @@ def log(filename: Any = None) -> Callable:
     return decorator
 
 
-@log("../src/mylog.txt")
+@log("mylog.txt")
 def my_decorator(a: Union[int, float], b: Union[int, float]) -> Union[int, float]:
     return a * b
 
