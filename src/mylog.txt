@@ -1,2 +1,5 @@
 my_decorator ok: 12
 my_decorator ok: 12
+my_decorator ok: 12
+add_numbers ok: 15
+add_numbers ok: 15

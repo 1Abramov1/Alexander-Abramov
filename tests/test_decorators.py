@@ -1,7 +1,8 @@
+import pytest
 from src.decorators import log
 
-def test_decorators():
-    @log("mylog.txt")
+def test_my_decorator():
+    @log("../src/mylog.txt")
     def add_numbers(a, b):
         return a * b
 
