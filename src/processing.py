@@ -39,6 +39,4 @@ state_data = [
 ]
 
 filtered_data = filter_by_state(state_data, "active")
-
 print(filtered_data)
-
