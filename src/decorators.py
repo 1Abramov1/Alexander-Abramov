@@ -39,3 +39,4 @@ def my_decorator(a: Union[int, float], b: Union[int, float]) -> Union[int, float
 
 
 print(my_decorator(3, 5))
+
