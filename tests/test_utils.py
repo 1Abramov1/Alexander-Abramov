@@ -1,7 +1,16 @@
-import json
+import unittest
+from unittest.mock import mock_open
+from unittest.mock import patch
 
-from unittest.mock import Mock, patch
-from src.utils import get_data_transactions
+from src.utils import transactions
 
-def test_get_data_transactions():
-    
+
+class TestTransactions(unittest.TestCase):
+    @patch("builtins.open", new_callable=mock_open, read_data='[{"id": 1, "amount": 100}]')
+    def test_transactions(self, mock_file):
+        result = transactions()
+        self.assertEqual(result, [{"id": 1, "amount": 100}])
+
+
+if __name__ == "__main__":
+    unittest.main()
