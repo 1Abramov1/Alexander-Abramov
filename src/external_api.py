@@ -1,4 +1,6 @@
 import os
+from typing import Any
+from typing import Dict
 from typing import Optional
 
 import requests
@@ -9,7 +11,12 @@ load_dotenv()
 API_KEY = os.getenv("API_KEY")
 
 
-def convert_currency(amount: int, currency: str) -> Optional[float]:
+def convert_currency(transaction: Dict[str, Any]) -> Optional[float]:
+    currency = transaction.get("currency")
+    amount = transaction.get("amount")
+
+    if currency is None or amount is None:
+        raise ValueError("Invalid transaction data")
     if currency not in ("USD", "EUR"):
         raise ValueError("Unsupported currency")
 
@@ -28,7 +35,8 @@ def convert_currency(amount: int, currency: str) -> Optional[float]:
 
 # Пример вызова функции
 try:
-    result = convert_currency(100, "USD")
+    transaction = {"amount": 100, "currency": "USD"}  # Создаём словарь с нужными данными
+    result = convert_currency(transaction)  # Передаём словарь в функцию
     if result is not None:
         print(f"Converted amount: {result} RUB")
 except ValueError as e:

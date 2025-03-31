@@ -74,3 +74,10 @@ def my_decorator(a: Union[int, float], b: Union[int, float]) -> Union[int, float
 print(my_decorator(3, 5))
 
 Покрытие тестами составляет 93% кода проекта.
+
+
+## Разработал модули external_api.py, utils.py
+
+## Примеры использования функци декоратора def log
+
+### def log

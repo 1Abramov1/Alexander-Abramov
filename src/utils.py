@@ -5,14 +5,15 @@ from typing import Dict
 from typing import List
 
 
-def transactions() -> List[Dict[str, Any]]:
+def transactions(file_path: str) -> List[Dict[str, Any]]:
     data = []
     try:
-        with open("../data/operations.json", encoding="utf-8") as f:
+        with open(file_path, encoding="utf-8") as f:
             data = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError) as e:
         print(f"Error: {e}")  # Отладочный вывод ошибки
     return data
 
 
-pprint(transactions())
+# Пример вызова функции
+pprint(transactions("../data/operations.json"))

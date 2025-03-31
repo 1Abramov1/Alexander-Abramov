@@ -15,7 +15,7 @@ class TestCurrencyConversion(unittest.TestCase):
         mock_get.return_value.status_code = 200
 
         # Тестируем конвертацию 100 USD в рубли
-        result = convert_currency(100, "USD")
+        result = convert_currency({"amount": 100, "currency": "USD"})
         self.assertEqual(result, 7450)
         # Проверяем, что запрос был сделан с правильными параметрами
         mock_get.assert_called_once_with(
@@ -27,10 +27,12 @@ class TestCurrencyConversion(unittest.TestCase):
 if __name__ == "__main__":
     unittest.main()
 
+
+class TestCurrencyConversion(unittest.TestCase):
     @patch("src.external_api.requests.get", side_effect=requests.exceptions.Timeout)
-    def test_convert_currency_timeout(self, mock_get):
+    def test_convert_currency_timeout(self, mock_get: Mock):
         # Проверяем, что функция возвращает None или обрабатывает тайм-аут корректно
-        result = convert_currency(100, "USD")
+        result = convert_currency({"amount": 100, "currency": "USD"})
         self.assertIsNone(result)
 
 
