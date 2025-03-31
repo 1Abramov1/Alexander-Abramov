@@ -81,3 +81,4 @@ print(my_decorator(3, 5))
 ## Примеры использования функци декоратора def log
 
 ### def log
+
