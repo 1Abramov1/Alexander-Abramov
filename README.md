@@ -1,46 +1,15 @@
-# Учебный проект по Python
+# Учебный проект по Python "Приложение для Банка" 
 
-# Добавлен новый модуль generators.py
+## Описание:
 
-## Примеры использования
+Проект "Личный кабинет банка" -  это приложение для работы с банком
 
-### filter_by_currency 
-```python
-from src.generators import filter_by_currency
-
-transactions = [
-    {"operationAmount": {"currency": {"code": "USD"}}},
-    {"operationAmount": {"currency": {"code": "EUR"}}}
-]
-
-usd_transactions = filter_by_currency(transactions, 'USD')
-for transaction in usd_transactions:
-    print(transaction)
+1. Клонируйте репозиторий:
+```
+https://github.com/1Abramov1/Alexander-Abramov/tree/main
 ```
 
-### transaction_descriptions
-```python
-from src.generators import transaction_descriptions
-
-transactions = [
-    {"description": "Перевод организации"},
-    {"description": "Перевод с карты на счет"}
-]
-
-descriptions = transaction_descriptions(transactions)
-for description in descriptions:
-    print(description)
-```
-
-### card_number_generator
-```python
-from src.generators import card_number_generator
-
-for card_number in card_number_generator(1, 3):
-    print(card_number)
-
-
-### Тестирование 
+### Тестирование
 
 Для тестирования проекта используется библиотека `pytest`. 
 
@@ -49,10 +18,67 @@ for card_number in card_number_generator(1, 3):
 'pytest'
 
 Тесты покрывают следующие модули и функции:
- 
-- 'generators': функции  'filter_by_currency'
-- 'generators': функции  'transaction_descriptions'
-- 'generators': функции   'card_number_generator'
+- `utils`: функции `get_mask_card_number` и `get_mask_account`.
+- `widget`: функции `mask_account_card` и `get_data`.
+- `processing`: функции `filter_by_state` и `sort_by_date`.
 
-- Покрытие тестами составляет 90% кода проекта.
+Покрытие тестами составляет 98% кода проекта.
+
+
+# Учебный проект по Python "Приложение для Банка" 
+
+
+## Разработал модули decorators.py, test_decorators.py, добавил mylog.txt
+
+
+## Примеры использования функци декоратора def log
+
+
+### def log
+
+```python
+
+from functools import wraps
+
+from typing import Any
+
+from typing import Callable
+
+from typing import Union
+
+
+def log (filename: Any = None) -> Callable:
+
+    def decorator(func: Callable) -> Callable:
+
+        @wraps(func)
+
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
+
+
+""" код условий добавления логов и обработок ошибок """
+
+        
+       return wrapper
+
+     return decorator
+
+
+@log("mylog.txt")
+
+def my_decorator(a: Union[int, float], b: Union[int, float]) -> Union[int, float]:
+
+    return a * b
+
+
+print(my_decorator(3, 5))
+
+Покрытие тестами составляет 93% кода проекта.
+
+
+## Разработал модули external_api.py, utils.py
+
+## Примеры использования функци декоратора def log
+
+### def log
 
