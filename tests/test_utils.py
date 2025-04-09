@@ -8,7 +8,7 @@ from src.utils import transactions
 class TestTransactions(unittest.TestCase):
     @patch("builtins.open", new_callable=mock_open, read_data='[{"id": 1, "amount": 100}]')
     def test_transactions(self, mock_file):
-        result = transactions()
+        result = transactions('fake_path.json')
         self.assertEqual(result, [{"id": 1, "amount": 100}])
 
 

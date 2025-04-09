@@ -1,6 +1,7 @@
 from typing import Dict
 from typing import List
 from typing import Tuple
+from typing import Any
 
 import pytest
 
@@ -44,3 +45,14 @@ def test_transaction_descriptions(transact_list: List[dict], expected: List[str]
 def test_card_number_generator(card_number_g: Tuple[int, int], expected: list[str]) -> None:
     result = list(card_number_generator(*card_number_g))
     assert result == expected
+
+
+def transaction_descriptions(transactions: List[Dict[str, Any]]) -> List[str]:
+    descriptions = []
+    for transaction in transactions:
+        description = transaction.get("description", "Описание отсутствует")
+        if not description:
+            description = "Описание отсутствует"
+        descriptions.append(description)
+    return descriptions
+
