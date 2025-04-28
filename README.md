@@ -82,3 +82,32 @@ print(my_decorator(3, 5))
 
 ### def log
 
+
+1. Описание функциональности:
+"Проект расширен поддержкой чтения финансовых операций из CSV- и Excel-файлов." 
+"Реализованы функции для считывания данных в унифицированном формате."
+
+2. Примеры использования:
+
+# Чтение CSV
+from src.reading_csv_and_excel import read_transact_csv_file
+data = read_transact_csv_file('data/transactions.csv')
+
+# Чтение Excel
+from src.reading_csv_and_excel import read_transact_excel_file
+data = read_transact_excel_file('data/transactions.xlsx')
+
+
+1. Требования:
+"Для работы необходимы:
+
+• pandas
+• openpyxl (для работы с Excel)"
+
+1. Тестирование:
+
+"Запуск тестов:
+
+pytest tests/ --cov=src
+
+Покрытие тестами: 91% 
