@@ -8,9 +8,9 @@ import pandas as pd
 """Функция для чтения CSV-файла и преобразования его в список словарей"""
 
 
-def read_transact_csv_file() -> list[Dict[str, str]]:
+def read_transact_csv_file(file_path: str) -> list[Dict[str, str]]:
     transactions = []
-    with open("../data/transactions.csv", encoding="utf-8") as file:
+    with open(file_path, encoding="utf-8") as file:
         reader = csv.DictReader(file, delimiter=";")
         for row in reader:
             if row["state"].strip() == "EXECUTED":
@@ -19,13 +19,15 @@ def read_transact_csv_file() -> list[Dict[str, str]]:
         return transactions
 
 
-filtered_transactions = read_transact_csv_file()  # преобразование выводимых данных из файла сsv
+filtered_transactions = read_transact_csv_file(
+    "../data/transactions.csv"
+)  # преобразование выводимых данных из файла сsv
 for transact in filtered_transactions:
     print(
-        f"ID: {transact['id']}, State: {transact['state']},"
-        f"Date: {transact['date']}, Amount: {transact['amount']}, Currency_name: {transact['currency_name']}"
+        f" ID: {transact['id']}, State: {transact['state']}, "
+        f" Date: {transact['date']}, Amount: {transact['amount']}, Currency_name: {transact['currency_name']} "
         f" Currency_code: {transact['currency_code']}, From: {transact['from']}, "
-        f"To: {transact['to']}, Description: {transact['description']}"
+        f" To: {transact['to']}, Description: {transact['description']} "
     )
     print("-" * 240)
 
