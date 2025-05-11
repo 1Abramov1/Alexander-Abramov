@@ -6,7 +6,7 @@ import logging
 # Создаем логгер
 
 logger = logging.getLogger('masks')
-file_handler = logging.FileHandler("../logs/masks.log", encoding="utf-8")
+file_handler = logging.FileHandler("logs/masks.log", encoding="utf-8")
 file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
@@ -43,5 +43,5 @@ def get_mask_account(account_number: str) -> str:
     return masked_account
 
 
-print(get_mask_card_number("7000792289606361"))
-print(get_mask_account("73654108430135874305"))
+#print(get_mask_card_number("7000792289606361"))
+#print(get_mask_account("73654108430135874305"))
