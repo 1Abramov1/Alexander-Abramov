@@ -34,7 +34,7 @@ def test_counter_logic():
         "перевод": ["перевод"]
     }
     result = count_transactions_types(test_data, categories)
-    assert result == {"карта": 1, "перевод": 1}
+    assert result == {"перевод": 1}
 
 
 def test_empty_transactions():

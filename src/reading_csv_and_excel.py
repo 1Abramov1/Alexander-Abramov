@@ -10,7 +10,7 @@ import pandas as pd
 
 def read_transact_csv_file(file_path: str) -> list[Dict[str, str]]:
     transactions = []
-    with open('../data/transactions.csv', encoding="utf-8") as file:
+    with open('./data/transactions.csv', encoding="utf-8") as file:
         reader = csv.DictReader(file, delimiter=";")
         for row in reader:
             if row["state"].strip() == "EXECUTED":
@@ -19,7 +19,7 @@ def read_transact_csv_file(file_path: str) -> list[Dict[str, str]]:
         return transactions
 
 
-filtered_transactions = read_transact_csv_file('../data/transactions.csv')  # преобразование выводимых данных из файла сsv
+filtered_transactions = read_transact_csv_file('./data/transactions.csv')  # преобразование выводимых данных из файла сsv
 for transact in filtered_transactions:
     print(
         f" ID: {transact['id']}, State: {transact['state']}, "
@@ -38,7 +38,7 @@ def read_transact_excel_file(file_path: str) -> list[dict[Hashable, Any]]:
 
 
 # Вызов функции и вывод результата
-result = read_transact_excel_file('../data/transactions_excel.xlsx')
+result = read_transact_excel_file('./data/transactions_excel.xlsx')
 for transaction in result:  # type: dict[Hashable, Any]
     print(transaction)
     print("-" * 50)  # разделитель между записями

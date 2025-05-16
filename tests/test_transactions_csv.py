@@ -27,4 +27,4 @@ class TestCSVReader(unittest.TestCase):
     def test_invalid_path(self, mocked_open: MagicMock) -> None:
         with self.assertRaises(FileNotFoundError):
             read_transact_csv_file("invalid_path.csv")
-        mocked_open.assert_called_once_with("data/transactions.csv", encoding="utf-8")
+        mocked_open.assert_called_once_with("./data/transactions.csv", encoding="utf-8")

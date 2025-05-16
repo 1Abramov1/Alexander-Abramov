@@ -104,7 +104,6 @@ def main() -> None:
             for t in transactions
             if t.get("operationAmount", {}).get("currency", {}).get("code", "").lower() == "rub"
         ]
-
     # Фильтрация по ключевому слову
     word_answer = input("Фильтровать по слову в описании? (да/нет): ").lower()
     if word_answer == "да":
@@ -114,13 +113,12 @@ def main() -> None:
     print("\nРаспечатываю итоговый список транзакций...")
     print(f"Всего операций в выборке: {len(transactions)}")
     for t in transactions:
-        from_account = f"{t.get('from_type', '')} {t.get('from', '')}"
-        to_account = f"{t.get('to_type', '')} {t.get('to', '')}"
-        print(
-            f"{t['date']} {t['description']}\n"
-            f"{mask_account_card(from_account)} -> {mask_account_card(to_account)}\n"
-            f"Сумма: {t.get('amount', 'N/A')} {t.get('currency_code', '')}\n"
-        )
+        from_account = f"{t.get('from', '')}"
+        to_account = f"{t.get('to', '')}"
+        if "operationAmount" in t.keys():
+             print(f"{t['date']} {t['description']}")
+             print(f"{mask_account_card(from_account)} -> {mask_account_card(to_account)}")
+             print(f"Сумма: {t['operationAmount']['amount']} {t.get('currency_code', '')}\n")
 
 
 if __name__ == "__main__":

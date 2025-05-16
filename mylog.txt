@@ -21,3 +21,8 @@ my_decorator ok: 15
 my_decorator ok: 15
 my_decorator ok: 15
 my_decorator ok: 15
+my_decorator ok: 15
+my_decorator ok: 15
+my_decorator ok: 15
+my_decorator ok: 15
+my_decorator ok: 15
